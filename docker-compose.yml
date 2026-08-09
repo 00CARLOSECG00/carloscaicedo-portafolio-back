@@ -1,0 +1,31 @@
+services:
+  api:
+    build: .
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    environment:
+      - ENVIRONMENT=development
+      - CORS_ORIGINS=http://localhost:3000,http://127.0.0.1:3000
+    volumes:
+      - ./app:/app/app
+    restart: unless-stopped
+
+  # Optional: local PostgreSQL (mirrors Supabase schema for development)
+  # Uncomment if you want a local DB instead of Supabase cloud.
+  # postgres:
+  #   image: postgres:16-alpine
+  #   environment:
+  #     POSTGRES_USER: portfolio
+  #     POSTGRES_PASSWORD: portfolio
+  #     POSTGRES_DB: portfolio
+  #   ports:
+  #     - "5432:5432"
+  #   volumes:
+  #     - pgdata:/var/lib/postgresql/data
+  #     - ./supabase/schema.sql:/docker-entrypoint-initdb.d/01-schema.sql
+  #     - ./supabase/seed.sql:/docker-entrypoint-initdb.d/02-seed.sql
+
+# volumes:
+#   pgdata:

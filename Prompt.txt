@@ -1,0 +1,1672 @@
+# MASTER PROMPT — PERSONAL AI & DATA PORTFOLIO
+
+Build a production-quality, highly polished personal portfolio website for **Carlos Caicedo**.
+
+This is NOT a traditional resume website.
+
+The website should feel like a **personal AI / Data laboratory and interactive product**, where visitors can explore Carlos's technical profile by interacting with real demonstrations rather than reading long descriptions.
+
+The entire visible website must be in **English**.
+
+The website should demonstrate expertise in:
+
+* Artificial Intelligence
+* Data
+* Machine Learning
+* NLP
+* Data analysis
+* Multiple database paradigms
+* AI applications
+* Data architecture
+* Knowledge representation
+
+The website must be visually impressive enough for recruiters, technical professionals, hiring managers, and non-technical visitors.
+
+A non-technical recruiter should understand what Carlos does without needing to understand the implementation details.
+
+A technical visitor should be able to recognize the depth behind the experiences.
+
+---
+
+# 1. CORE DESIGN PHILOSOPHY
+
+Do NOT create a conventional portfolio containing:
+
+* generic skill bars
+* percentage charts
+* "5 years of experience" counters
+* giant technology lists
+* excessive text
+* generic project cards
+* GitHub repository lists
+* unnecessary statistics
+* a long traditional resume
+
+Instead, the website should communicate:
+
+> "Don't just read my resume. Explore how I think and what I build."
+
+The website itself should be part of the portfolio.
+
+The visitor should be able to:
+
+* talk to an AI about Carlos
+* interact with NLP models
+* explore different database paradigms
+* explore Carlos's knowledge graph
+* interact with geospatial data
+* discover projects through the AI assistant
+* access LinkedIn, GitHub and email
+* download a resume
+
+---
+
+# 2. VISUAL STYLE
+
+Use a **dark premium + modern dashboard / AI laboratory aesthetic**.
+
+The visual language should feel similar to a high-end AI startup product rather than a developer template.
+
+Characteristics:
+
+* dark background
+* elegant typography
+* subtle gradients
+* restrained accent colors
+* glass / translucent surfaces where appropriate
+* thin borders
+* subtle glow effects
+* high-quality cards
+* smooth transitions
+* interactive elements
+* sophisticated spacing
+* excellent visual hierarchy
+* subtle data visualization aesthetics
+
+Avoid:
+
+* excessive neon
+* cyberpunk aesthetics
+* excessive glowing effects
+* cheesy futuristic graphics
+* excessive particles
+* overly colorful dashboards
+* generic SaaS template appearance
+
+The design should feel:
+
+**premium, intelligent, technical, minimal and intentional.**
+
+Use animations throughout the website, but keep them subtle and performant.
+
+Animations may include:
+
+* scroll reveal
+* hover transitions
+* card expansion
+* graph node animations
+* subtle background motion
+* loading animations
+* AI typing/streaming
+* smooth page transitions
+* microinteractions
+
+Respect `prefers-reduced-motion`.
+
+---
+
+# 3. RESPONSIVENESS
+
+The website MUST be fully responsive.
+
+Priority:
+
+1. Desktop
+2. Tablet
+3. Mobile
+
+Desktop should receive the most visual attention because recruiters will primarily experience the portfolio on desktop.
+
+However, mobile must remain fully functional.
+
+Do not simply shrink the desktop layout.
+
+Create appropriate mobile layouts for:
+
+* AI chat
+* database explorer
+* knowledge graph
+* map
+* project cards
+* navigation
+* interactive controls
+
+---
+
+# 4. TECHNOLOGY / FRONTEND
+
+Use a modern React / Next.js architecture appropriate for deployment on Vercel.
+
+Use TypeScript.
+
+Use reusable components.
+
+Keep the architecture clean and modular.
+
+Separate:
+
+* UI components
+* API client logic
+* types/interfaces
+* configuration
+* fallback/mock data
+* feature-specific components
+
+Do not hardcode API URLs throughout components.
+
+Do not hardcode timeouts throughout components.
+
+Do not hardcode configurable parameters in multiple locations.
+
+---
+
+# 5. GLOBAL CONFIGURATION
+
+Create ONE centralized configuration system.
+
+Create a clearly identifiable configuration file such as:
+
+`config/site.config.ts`
+
+or an equivalent structure.
+
+All values that may reasonably change over time must be centralized.
+
+Examples:
+
+```ts
+export const siteConfig = {
+  name: "Carlos Caicedo",
+
+  title: "AI · Data · Machine Learning",
+
+  api: {
+    baseUrl: "...",
+
+    timeoutMs: 10000,
+
+    retryAttempts: 2,
+
+    retryDelayMs: 1000,
+
+    cacheDurationMs: 60000
+  },
+
+  ai: {
+    streamingEnabled: true,
+
+    maxMessageLength: 4000,
+
+    maxConversationMessages: 50
+  },
+
+  map: {
+    defaultLatitude: 0,
+
+    defaultLongitude: -75,
+
+    defaultZoom: 3
+  },
+
+  features: {
+    aiAssistant: true,
+
+    nlpPlayground: true,
+
+    databaseLab: true,
+
+    knowledgeGraph: true,
+
+    geospatial: true,
+
+    resumeDownload: true
+  }
+}
+```
+
+The exact implementation may differ, but the principle is mandatory.
+
+Create environment variables for values that should NOT be committed to source control.
+
+Examples:
+
+```text
+NEXT_PUBLIC_API_BASE_URL
+NEXT_PUBLIC_MAP_PROVIDER
+NEXT_PUBLIC_ENABLE_AI
+NEXT_PUBLIC_ENABLE_NLP
+NEXT_PUBLIC_ENABLE_DATABASE_LAB
+NEXT_PUBLIC_ENABLE_KNOWLEDGE_GRAPH
+NEXT_PUBLIC_ENABLE_GEOSPATIAL
+```
+
+Do NOT expose secret API keys in frontend code.
+
+Any future Groq API key must be handled server-side or through the backend.
+
+The frontend must never contain a secret Groq API key.
+
+---
+
+# 6. PERSONAL INFORMATION
+
+Use:
+
+Name:
+
+**Carlos Caicedo**
+
+Professional descriptor:
+
+**AI · Data · Machine Learning**
+
+LinkedIn:
+
+https://www.linkedin.com/in/00carlos-caicedo00/
+
+GitHub:
+
+https://github.com/00CARLOSECG00
+
+Email:
+
+[carloscaicedog2008@hotmail.com](mailto:carloscaicedog2008@hotmail.com)
+
+Resume:
+
+Create a configurable resume URL, initially:
+
+`/resume.pdf`
+
+The button should say:
+
+**Download Resume**
+
+Do not create a fake resume file.
+
+The frontend should gracefully handle the file not existing.
+
+---
+
+# 7. MAIN NAVIGATION
+
+Create a minimal navigation.
+
+Suggested navigation:
+
+* Home
+* AI Lab
+* Projects
+* Databases
+* Knowledge
+* Contact
+
+The navigation should be sticky/floating and elegant.
+
+On mobile, use a polished mobile menu.
+
+The navigation should not occupy excessive screen space.
+
+---
+
+# 8. HERO SECTION
+
+The hero should immediately communicate the purpose of the website.
+
+Use:
+
+# Carlos Caicedo
+
+## AI · Data · Machine Learning
+
+Use a strong supporting statement, such as:
+
+> I build intelligent systems where AI, data and technology intersect.
+
+The hero should have two primary CTAs:
+
+**Explore my work**
+
+**Talk to my AI**
+
+The second CTA should scroll directly to or open the AI assistant.
+
+Use subtle animated visual elements in the hero.
+
+Do not use generic stock images.
+
+The hero should feel like the entrance to an AI laboratory.
+
+---
+
+# 9. AI ASSISTANT — "TALK TO MY AI"
+
+This is one of the MOST IMPORTANT features on the website.
+
+Create a premium conversational AI interface.
+
+Title:
+
+# Talk to my AI
+
+Subtitle:
+
+> Ask anything about my experience, projects, technical background or interests.
+
+The assistant is intended to eventually use:
+
+* personal documents
+* resume
+* project documentation
+* technical notes
+* portfolio content
+* knowledge base
+* vector database
+* semantic retrieval
+* an LLM through a backend
+* Groq Cloud
+
+The frontend should be completely prepared for a future RAG backend.
+
+---
+
+## 9.1 Chat behavior
+
+The user must be able to freely type questions.
+
+Do NOT rely only on predefined buttons.
+
+Optional suggested prompts may exist, such as:
+
+* "What does Carlos specialize in?"
+* "Tell me about his AI projects."
+* "What databases does he work with?"
+* "How does he approach data problems?"
+* "Show me projects related to NLP."
+* "What is Carlos currently exploring?"
+
+But the primary interaction is free-form conversation.
+
+---
+
+# 9.2 Streaming
+
+Prepare the frontend for streaming responses.
+
+When streaming is enabled:
+
+* show an AI typing state
+* render text progressively
+* maintain smooth scrolling
+* allow cancellation if appropriate
+* handle network interruption gracefully
+
+Also support normal non-streaming JSON responses.
+
+Streaming should be controlled by configuration.
+
+---
+
+# 9.3 STRUCTURED AI RESPONSES
+
+This is critical.
+
+The AI must NOT be limited to returning plain text.
+
+The backend should eventually be able to return structured content.
+
+Design the frontend to support responses containing:
+
+* text
+* project cards
+* database cards
+* knowledge references
+* links
+* actions
+* tags
+* related content
+* images if needed later
+
+Example conceptual response:
+
+```json
+{
+  "message": "Carlos has worked on several AI and data projects.",
+  "cards": [
+    {
+      "type": "project",
+      "id": "nlp-playground",
+      "title": "NLP Playground",
+      "description": "Interactive NLP experiments.",
+      "action": {
+        "label": "Explore project",
+        "target": "/projects/nlp"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "knowledge",
+      "id": "nlp"
+    }
+  ]
+}
+```
+
+The frontend must render these cards beautifully.
+
+Do NOT allow the LLM to generate raw HTML.
+
+Use structured JSON and predefined React components.
+
+The assistant should effectively become a navigation layer for the entire portfolio.
+
+For example:
+
+User:
+
+> What AI projects has Carlos built?
+
+AI responds with text + project cards.
+
+User:
+
+> What databases does he know?
+
+AI responds with text + database visualization/cards.
+
+User:
+
+> Tell me about RAG.
+
+AI may provide an explanation + links to relevant projects + a knowledge graph reference.
+
+---
+
+# 9.4 AI error handling
+
+If the AI backend is unavailable:
+
+DO NOT break the website.
+
+Display a polished message such as:
+
+> The AI assistant is temporarily unavailable. Please explore the interactive projects below.
+
+The rest of the website must continue working.
+
+Do not expose:
+
+* stack traces
+* raw HTTP errors
+* API URLs
+* internal implementation details
+
+---
+
+# 9.5 AI loading states
+
+Create polished loading states.
+
+Examples:
+
+* animated dots
+* subtle shimmer
+* "Thinking..."
+* "Searching my knowledge..."
+* "Preparing an answer..."
+
+Do not make loading states annoying.
+
+---
+
+# 10. NLP PLAYGROUND
+
+Create an interactive section called:
+
+# NLP Playground
+
+Subtitle:
+
+> Explore what machines can understand from text.
+
+The user can enter arbitrary text.
+
+Create a large text input.
+
+Provide analysis modes:
+
+* Sentiment
+* Emotion
+* Language Detection
+* Keywords
+* Named Entities
+* Summarization
+
+The UI should be modular so individual tools can be removed later without redesigning the entire page.
+
+---
+
+## 10.1 Sentiment
+
+Example result:
+
+```text
+Positive
+████████████████
+```
+
+Use visual cards rather than technical JSON.
+
+---
+
+## 10.2 Emotion
+
+Display results visually.
+
+For example:
+
+* Joy
+* Anger
+* Sadness
+* Fear
+* Surprise
+
+Do not make the visualization overly scientific.
+
+---
+
+## 10.3 Language Detection
+
+Display:
+
+> English
+
+or:
+
+> Spanish
+
+etc.
+
+---
+
+## 10.4 Keywords
+
+Display extracted keywords as elegant tags.
+
+---
+
+## 10.5 Named Entities
+
+Highlight entities directly inside the original text where appropriate.
+
+Examples:
+
+* people
+* organizations
+* locations
+* dates
+
+---
+
+## 10.6 Summarization
+
+Display:
+
+**Summary**
+
+followed by a clean generated summary.
+
+---
+
+## 10.7 NLP API
+
+Prepare the frontend for REST requests.
+
+Each analysis should have its own clearly defined API contract.
+
+The backend may later implement only some of the tools.
+
+If a particular tool is unavailable:
+
+Display:
+
+> This analysis is currently unavailable.
+
+Do not disable the entire NLP Playground.
+
+Each tool must fail independently.
+
+---
+
+# 11. DATABASE LAB
+
+Create a visually impressive section called:
+
+# One Dataset. Many Ways to See It.
+
+Subtitle:
+
+> Different problems require different ways of representing data.
+
+This section is extremely important.
+
+Use ONE coherent fictional dataset.
+
+For example:
+
+* customers
+* products
+* orders
+* reviews
+* locations
+
+Allow the user to switch between database paradigms:
+
+* Relational
+* Document
+* Columnar
+* Key-Value
+* Vector
+* Graph
+* Geospatial
+
+---
+
+# 11.1 RELATIONAL VIEW
+
+Display an elegant table.
+
+Example:
+
+```text
+CUSTOMERS
+
+ID | NAME | CITY
+1  | Ana  | Bogotá
+2  | John | Medellín
+```
+
+Allow interactive selection/filtering.
+
+---
+
+# 11.2 DOCUMENT VIEW
+
+Display a beautiful JSON/document representation.
+
+Example:
+
+```json
+{
+  "name": "Ana",
+  "city": "Bogotá",
+  "orders": [...]
+}
+```
+
+Make it visually readable.
+
+---
+
+# 11.3 COLUMNAR VIEW
+
+Show columns and analytical characteristics.
+
+Explain in simple English:
+
+> Designed for reading large amounts of selected columns efficiently.
+
+Do not overwhelm the user with technical jargon.
+
+---
+
+# 11.4 KEY-VALUE VIEW
+
+Show:
+
+```text
+customer:123 → {...}
+customer:124 → {...}
+```
+
+Allow clicking a key to reveal the associated value.
+
+---
+
+# 11.5 VECTOR VIEW
+
+Create a visual representation of embeddings.
+
+Do NOT just show arrays of numbers.
+
+Instead visually represent:
+
+```text
+Customer description
+        ↓
+    Embedding
+        ↓
+Semantic space
+```
+
+Allow a user to enter a short query such as:
+
+> "Customers interested in technology"
+
+Then visually show similar records.
+
+This can initially use mock/fallback data but must be prepared for a real backend/vector database.
+
+---
+
+# 11.6 GRAPH VIEW
+
+Display entities and relationships.
+
+Example:
+
+```text
+Ana
+ │
+ ├── bought → Laptop
+ │
+ ├── lives → Bogotá
+ │
+ └── reviewed → Product
+```
+
+Use an interactive graph.
+
+---
+
+# 11.7 GEOSPATIAL VIEW
+
+Display the same dataset geographically.
+
+The map must be centered on **Latin America**.
+
+The map must be interactive.
+
+If the backend/API is available:
+
+* retrieve geographic data
+* render markers
+* render polygons if provided
+* render relevant regions
+* support interaction
+
+If the API is unavailable:
+
+**Render the map normally with no markers, no polygons and no highlighted regions.**
+
+The map itself must never disappear merely because the API failed.
+
+---
+
+# 11.8 DATABASE LAB API
+
+The frontend should be prepared to perform real REST queries for each database representation.
+
+Do not make the frontend directly depend on a specific database vendor.
+
+The backend API is the abstraction layer.
+
+---
+
+# 12. KNOWLEDGE GRAPH
+
+Create a major interactive section:
+
+# My Knowledge Graph
+
+Subtitle:
+
+> Explore the ideas, technologies and concepts that connect my work.
+
+This must be a REAL interactive graph, not a static image.
+
+The graph should contain conceptual relationships such as:
+
+```text
+AI
+├── Machine Learning
+├── NLP
+├── LLMs
+├── RAG
+│   ├── Embeddings
+│   ├── Retrieval
+│   └── Vector Databases
+└── AI Applications
+
+Databases
+├── Relational
+├── Document
+├── Columnar
+├── Key-Value
+├── Vector
+├── Graph
+└── Geospatial
+```
+
+Nodes must be clickable.
+
+Clicking a node should reveal:
+
+* description
+* related concepts
+* related projects
+* technologies if relevant
+* links to other sections
+
+Example:
+
+Clicking `RAG`:
+
+```text
+RAG
+
+Retrieval-Augmented Generation connects language models
+with external knowledge sources.
+
+Related:
+• Embeddings
+• Vector Databases
+• LLMs
+
+Related project:
+• Talk to my AI
+```
+
+---
+
+# 12.1 Knowledge Graph backend
+
+Prepare the frontend for a backend/Graph Database.
+
+The graph data should eventually be retrieved through REST.
+
+However, if the backend is unavailable:
+
+**Use a local fallback graph dataset.**
+
+The graph must remain functional.
+
+This means a backend outage must NOT produce an empty screen.
+
+---
+
+# 13. PROJECTS
+
+Create a concise section:
+
+# Things I've Built
+
+Do not make this a traditional GitHub portfolio.
+
+Projects should be presented as interactive experiences.
+
+At minimum prepare cards/components for:
+
+1. Talk to My AI
+2. NLP Playground
+3. Database Lab
+
+Allow additional projects to be added later through configuration/data rather than redesigning the page.
+
+Each project card should contain:
+
+* title
+* short description
+* category
+* visual identity
+* interactive CTA
+* optional technologies
+* optional project URL
+
+Avoid huge technology lists.
+
+---
+
+# 14. "HOW I THINK" MICRO-SECTION
+
+Add a compact section explaining the philosophy behind the work.
+
+Title:
+
+# How I Think
+
+Use an interactive/simple flow:
+
+```text
+Problem
+   ↓
+Understand the Data
+   ↓
+Choose the Right Representation
+   ↓
+Build
+   ↓
+Evaluate
+   ↓
+Improve
+```
+
+This should be visual, concise and interactive.
+
+Do not create a long essay.
+
+The purpose is to communicate analytical thinking and engineering judgment.
+
+---
+
+# 15. CONTACT
+
+Create a clean final section:
+
+# Let's Connect
+
+Include:
+
+LinkedIn
+
+https://www.linkedin.com/in/00carlos-caicedo00/
+
+GitHub
+
+https://github.com/00CARLOSECG00
+
+Email
+
+[carloscaicedog2008@hotmail.com](mailto:carloscaicedog2008@hotmail.com)
+
+Resume
+
+Download Resume
+
+The email should use a mailto link.
+
+The resume should point to:
+
+`/resume.pdf`
+
+Make all URLs configurable.
+
+---
+
+# 16. FOOTER
+
+Minimal footer.
+
+Example:
+
+> Carlos Caicedo
+> AI · Data · Machine Learning
+
+Include social/contact links.
+
+Do not add unnecessary footer content.
+
+---
+
+# 17. API ARCHITECTURE
+
+The frontend must communicate with the backend through REST APIs.
+
+Do not tightly couple UI components to backend implementation.
+
+Create a centralized API client.
+
+For example:
+
+```text
+lib/api/
+```
+
+Create typed API functions.
+
+Each function should:
+
+* call the appropriate endpoint
+* respect the global timeout
+* handle HTTP errors
+* handle network errors
+* optionally retry
+* return typed data
+* fall back gracefully
+
+---
+
+# 18. GLOBAL API FAILURE STRATEGY
+
+This is extremely important.
+
+The website must behave as an independent frontend application.
+
+A backend outage MUST NEVER break the frontend.
+
+Every API-dependent feature must have three states:
+
+1. Loading
+2. Success
+3. Unavailable / fallback
+
+Never allow:
+
+* uncaught promise errors
+* broken React components
+* blank sections
+* infinite loading
+* raw error messages
+
+Examples:
+
+### AI
+
+Backend unavailable:
+
+> AI assistant temporarily unavailable.
+
+### NLP
+
+One tool unavailable:
+
+> This analysis is currently unavailable.
+
+Other NLP tools must continue working.
+
+### Database Lab
+
+Backend unavailable:
+
+Show a local simulation of the database.
+
+### Knowledge Graph
+
+Backend unavailable:
+
+Show local fallback graph.
+
+### Geospatial
+
+Backend unavailable:
+
+Show the map centered on Latin America with **no data overlays**.
+
+---
+
+# 19. FALLBACK DATA
+
+Create a dedicated fallback/mock data layer.
+
+For example:
+
+```text
+data/fallback/
+```
+
+Include fallback data for:
+
+* AI structured responses
+* projects
+* NLP examples
+* relational database
+* document database
+* columnar database
+* key-value database
+* vector examples
+* graph data
+* knowledge graph
+
+Fallback data must look realistic and coherent.
+
+Clearly separate fallback data from production API data.
+
+Do NOT use random lorem ipsum.
+
+---
+
+# 20. API TIMEOUTS AND RETRIES
+
+Every API request must use centralized configuration.
+
+Do NOT hardcode:
+
+```text
+fetch(..., { timeout: 5000 })
+```
+
+throughout the project.
+
+Instead use:
+
+```text
+config.api.timeoutMs
+```
+
+Same for:
+
+* retry attempts
+* retry delay
+* cache duration
+* polling intervals
+* maximum message length
+* maximum records
+* graph limits
+* map limits
+
+Make all these configurable.
+
+---
+
+# 21. ENDPOINT DOCUMENTATION
+
+Create a file at the root of the project:
+
+# `endpoints.txt`
+
+This file is mandatory.
+
+It must document EVERY REST request the frontend makes or expects.
+
+For EVERY endpoint document:
+
+* HTTP method
+* URL/path
+* purpose
+* query parameters
+* request body
+* request headers if relevant
+* success response
+* response fields
+* example JSON response
+* expected HTTP status
+* possible error responses
+* frontend behavior when unavailable
+
+Use a clear structure.
+
+Example:
+
+```text
+==================================================
+POST /api/ai/chat
+==================================================
+
+Purpose:
+Send a user message to the AI assistant.
+
+Request body:
+
+{
+  "message": "What AI projects has Carlos built?",
+  "conversationId": "optional-id"
+}
+
+Success: HTTP 200
+
+Response:
+
+{
+  "message": "...",
+  "cards": [],
+  "references": []
+}
+
+Streaming:
+Optional.
+
+Errors:
+
+HTTP 408:
+Request timeout.
+
+HTTP 429:
+Rate limit.
+
+HTTP 500:
+Backend error.
+
+Frontend fallback:
+Display an unavailable state and keep the rest
+of the portfolio functional.
+```
+
+Document ALL endpoints.
+
+Do not document endpoints that do not exist in the frontend.
+
+Do not invent unnecessary endpoints.
+
+---
+
+# 22. EXPECTED REST ENDPOINTS
+
+At minimum prepare the architecture for these conceptual endpoints:
+
+## AI
+
+```text
+POST /api/ai/chat
+```
+
+Optional:
+
+```text
+POST /api/ai/chat/stream
+```
+
+if streaming is implemented as a separate endpoint.
+
+---
+
+## NLP
+
+```text
+POST /api/nlp/sentiment
+POST /api/nlp/emotion
+POST /api/nlp/language
+POST /api/nlp/keywords
+POST /api/nlp/entities
+POST /api/nlp/summarize
+```
+
+Each should accept text and return typed JSON.
+
+---
+
+## Databases
+
+```text
+GET /api/databases/relational
+GET /api/databases/document
+GET /api/databases/columnar
+GET /api/databases/key-value
+POST /api/databases/vector/search
+GET /api/databases/graph
+GET /api/databases/geospatial
+```
+
+Use POST for vector search because it needs a query body.
+
+---
+
+## Knowledge Graph
+
+```text
+GET /api/knowledge-graph
+GET /api/knowledge-graph/nodes/:id
+```
+
+---
+
+## Projects
+
+```text
+GET /api/projects
+GET /api/projects/:id
+```
+
+Only include these if the frontend actually uses them.
+
+Static project information can remain local if there is no real need for a backend request.
+
+Prefer simplicity.
+
+---
+
+# 23. API TYPES
+
+Create TypeScript interfaces/types for all API responses.
+
+For example:
+
+```text
+AIResponse
+AIContentCard
+NLPResponse
+SentimentResponse
+EmotionResponse
+EntityResponse
+DatabaseResponse
+VectorSearchResponse
+GraphResponse
+KnowledgeNode
+Project
+```
+
+Do not use `any` unnecessarily.
+
+The API contract should be easy to understand and modify later.
+
+---
+
+# 24. PERFORMANCE
+
+The site should feel extremely fast.
+
+Use:
+
+* lazy loading
+* dynamic imports for heavy visualizations
+* code splitting
+* optimized assets
+* optimized fonts
+* lightweight animations
+* memoization where appropriate
+* efficient graph rendering
+* map component lazy loading
+
+Do not load large visualization libraries before they are needed.
+
+The initial hero should render quickly.
+
+---
+
+# 25. ACCESSIBILITY
+
+Implement good accessibility.
+
+Include:
+
+* semantic HTML
+* keyboard navigation
+* visible focus states
+* accessible buttons
+* accessible form inputs
+* proper labels
+* sufficient contrast
+* screen-reader friendly states
+* reduced motion support
+
+Do not sacrifice accessibility for visual effects.
+
+---
+
+# 26. SEO
+
+Create proper:
+
+* page title
+* meta description
+* Open Graph metadata
+* favicon
+* semantic headings
+
+Suggested title:
+
+`Carlos Caicedo — AI · Data · Machine Learning`
+
+Suggested description:
+
+`Interactive portfolio of Carlos Caicedo, exploring AI, data, machine learning and intelligent systems.`
+
+---
+
+# 27. ERROR BOUNDARIES
+
+Implement appropriate frontend error boundaries.
+
+A failure in:
+
+* AI
+* NLP
+* graph
+* map
+* database visualization
+
+must NOT crash the entire application.
+
+Each major interactive module should be isolated.
+
+---
+
+# 28. NO FAKE FUNCTIONALITY
+
+Do not create buttons that appear functional but do nothing.
+
+If backend functionality is not available yet:
+
+* use realistic fallback data
+* clearly structure the component for future API integration
+* make the interaction work locally whenever possible
+
+The frontend should already feel complete before the backend exists.
+
+---
+
+# 29. CONTENT
+
+All visible copy must be in English.
+
+Use concise, polished language.
+
+Avoid generic phrases like:
+
+* "passionate about technology"
+* "hard-working professional"
+* "results-driven individual"
+* "I love solving problems"
+
+Instead communicate through the experiences.
+
+The website should feel confident without exaggerating expertise.
+
+---
+
+# 30. IMPORTANT UX PRINCIPLE
+
+The visitor should never feel like they are filling out a form or reading technical documentation.
+
+They should feel like they are exploring a product.
+
+Use microcopy such as:
+
+> Explore
+
+> Ask something
+
+> Try it yourself
+
+> See how it works
+
+> Follow the connection
+
+> Change the representation
+
+> Investigate
+
+> Discover
+
+---
+
+# 31. FINAL PAGE STRUCTURE
+
+The final website should approximately follow:
+
+```text
+HOME
+│
+├── Hero
+│
+├── Talk to My AI
+│
+├── Things I've Built
+│   ├── NLP Playground
+│   ├── Database Lab
+│   └── Additional Projects
+│
+├── One Dataset. Many Ways to See It.
+│
+├── How I Think
+│
+├── My Knowledge Graph
+│
+├── Let's Connect
+│
+└── Footer
+```
+
+Do not create excessive additional sections.
+
+The website should remain focused.
+
+---
+
+# 32. IMPORTANT: BACKEND-AGNOSTIC FRONTEND
+
+The frontend is being developed BEFORE the backend.
+
+Therefore:
+
+* do not assume the backend exists
+* do not require backend availability during development
+* use fallback data
+* isolate API logic
+* document API contracts
+* make endpoints configurable
+* make timeouts configurable
+* make retry behavior configurable
+* make feature flags configurable
+
+The eventual backend may use:
+
+* PostgreSQL
+* vector database
+* graph database
+* geospatial database
+* other specialized databases
+* Groq Cloud
+* NLP/ML services
+
+But the frontend must not depend directly on these technologies.
+
+The frontend should only care about REST contracts.
+
+---
+
+# 33. GROQ CLOUD
+
+The future AI backend is expected to use Groq Cloud.
+
+Do NOT put the Groq API key in client-side code.
+
+The frontend communicates with the backend.
+
+The backend will communicate with Groq.
+
+The frontend should simply consume the structured AI response.
+
+The frontend should support both:
+
+* normal JSON responses
+* streaming responses
+
+---
+
+# 34. CODE QUALITY
+
+Write production-quality code.
+
+Avoid:
+
+* giant components
+* duplicated logic
+* hardcoded URLs
+* hardcoded timeouts
+* hardcoded API keys
+* unnecessary dependencies
+* excessive comments
+* placeholder lorem ipsum
+* unused imports
+* dead code
+
+Use clear component names.
+
+Use a maintainable folder structure.
+
+---
+
+# 35. DELIVERABLES
+
+When generating the project, provide:
+
+1. Complete frontend application.
+2. Fully responsive implementation.
+3. Interactive UI for every major feature.
+4. Local fallback data.
+5. Centralized configuration.
+6. Typed API client.
+7. Typed API models.
+8. Error handling.
+9. Loading states.
+10. Empty states.
+11. Backend unavailable states.
+12. `endpoints.txt`.
+13. `README.md`.
+
+The README should briefly explain:
+
+* how to run locally
+* how to configure environment variables
+* where the global configuration lives
+* where fallback data lives
+* how to change API base URL
+* how to add a new project
+* how to enable/disable features
+* how the REST API contract works
+* where to place `resume.pdf`
+
+---
+
+# 36. FINAL QUALITY BAR
+
+Before considering the project complete, verify:
+
+### Visual
+
+* Does it look like a premium AI startup product?
+* Does it look intentional and original?
+* Does it avoid generic portfolio templates?
+* Are animations subtle and polished?
+* Is typography excellent?
+* Is spacing excellent?
+
+### UX
+
+* Can a recruiter understand the profile in under one minute?
+* Can a technical visitor explore deeper?
+* Can every major experience actually be interacted with?
+* Does the site remain useful if the backend is completely offline?
+
+### Technical
+
+* Are APIs centralized?
+* Are timeouts configurable?
+* Are retries configurable?
+* Are feature flags configurable?
+* Are API responses typed?
+* Is fallback data implemented?
+* Does `endpoints.txt` accurately document the frontend contract?
+* Are secret keys protected?
+* Are heavy components lazy-loaded?
+
+### Most importantly
+
+The website should feel like:
+
+> **a working demonstration of an AI & Data engineer's way of thinking**
+
+—not like a resume with animations.
+
+Build the frontend accordingly.
