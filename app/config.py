@@ -15,7 +15,7 @@ class Settings(BaseSettings):
     # App
     environment: str = "development"
     api_prefix: str = "/api"
-    cors_origins: str = "http://localhost:3000,http://127.0.0.1:3000"
+    cors_origins: str = "*"
 
     # Groq (AI assistant + optional NLP)
     groq_api_key: str = ""
@@ -38,7 +38,13 @@ class Settings(BaseSettings):
 
     @property
     def cors_origin_list(self) -> list[str]:
+        if self.cors_origins.strip() == "*":
+            return ["*"]
         return [o.strip() for o in self.cors_origins.split(",") if o.strip()]
+
+    @property
+    def cors_allow_credentials(self) -> bool:
+        return self.cors_origin_list != ["*"]
 
     @property
     def groq_enabled(self) -> bool:
