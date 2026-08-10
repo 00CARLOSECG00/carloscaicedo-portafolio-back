@@ -24,6 +24,8 @@ class Settings(BaseSettings):
     # Supabase (PostgreSQL + optional pgvector)
     supabase_url: str = ""
     supabase_service_key: str = ""
+    supabase_service_role_key: str = ""
+    supabase_anon_key: str = ""
     database_url: str = ""
 
     # Feature flags
@@ -51,8 +53,15 @@ class Settings(BaseSettings):
         return bool(self.groq_api_key) and self.use_groq_ai
 
     @property
+    def active_supabase_key(self) -> str:
+        for candidate in (self.supabase_service_role_key, self.supabase_service_key, self.supabase_anon_key):
+            if candidate and candidate.strip():
+                return candidate.strip()
+        return ""
+
+    @property
     def supabase_enabled(self) -> bool:
-        return bool(self.supabase_url and self.supabase_service_key)
+        return bool(self.supabase_url and self.active_supabase_key)
 
 
 @lru_cache
