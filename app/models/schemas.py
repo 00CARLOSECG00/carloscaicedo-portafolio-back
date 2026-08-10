@@ -266,6 +266,30 @@ class Education(BaseModel):
     end_date: str | None = None
 
 
+class Language(BaseModel):
+    id: str
+    name: str
+    proficiency: str | None = None
+    sort_order: int = 0
+
+
+class Certificate(BaseModel):
+    id: str
+    title: str
+    issuer: str | None = None
+    issue_date: str | None = None
+    credential_url: str | None = None
+    logo_url: str | None = None
+    sort_order: int = 0
+
+
+class Achievement(BaseModel):
+    id: str
+    title: str
+    description: str | None = None
+    sort_order: int = 0
+
+
 class MethodologyStep(BaseModel):
     label: str
     detail: str

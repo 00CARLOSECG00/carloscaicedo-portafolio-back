@@ -6,18 +6,24 @@ import logging
 
 from app.config import Settings, get_settings
 from app.data.fallback_content import (
+    FALLBACK_ACHIEVEMENTS,
     FALLBACK_AI_SUGGESTIONS,
+    FALLBACK_CERTIFICATES,
     FALLBACK_EDUCATION,
     FALLBACK_EXPERIENCE,
+    FALLBACK_LANGUAGES,
     FALLBACK_METHODOLOGY,
     FALLBACK_PROFILE,
     FALLBACK_PROFILE_CONTEXT,
     FALLBACK_PROJECTS,
 )
 from app.models.schemas import (
+    Achievement,
     AISuggestionsResponse,
+    Certificate,
     Education,
     Experience,
+    Language,
     MethodologyStep,
     Profile,
     ProfileContextChunk,
@@ -176,6 +182,72 @@ def get_methodology(settings: Settings | None = None) -> list[MethodologyStep]:
     return FALLBACK_METHODOLOGY
 
 
+def get_languages(settings: Settings | None = None) -> list[Language]:
+    settings = settings or get_settings()
+    client = get_supabase_client(settings)
+    if client and settings.use_supabase_content:
+        try:
+            resp = client.table("languages").select("*").eq("is_active", True).order("sort_order").execute()
+            if resp.data:
+                return [
+                    Language(
+                        id=str(row["id"]),
+                        name=row["name"],
+                        proficiency=row.get("proficiency"),
+                        sort_order=row.get("sort_order", 0),
+                    )
+                    for row in resp.data
+                ]
+        except Exception as exc:
+            logger.warning("Supabase languages fetch failed: %s", exc)
+    return FALLBACK_LANGUAGES
+
+
+def get_certificates(settings: Settings | None = None) -> list[Certificate]:
+    settings = settings or get_settings()
+    client = get_supabase_client(settings)
+    if client and settings.use_supabase_content:
+        try:
+            resp = client.table("certificates").select("*").eq("is_active", True).order("sort_order").execute()
+            if resp.data:
+                return [
+                    Certificate(
+                        id=str(row["id"]),
+                        title=row["title"],
+                        issuer=row.get("issuer"),
+                        issue_date=row.get("issue_date"),
+                        credential_url=row.get("credential_url"),
+                        logo_url=row.get("logo_url"),
+                        sort_order=row.get("sort_order", 0),
+                    )
+                    for row in resp.data
+                ]
+        except Exception as exc:
+            logger.warning("Supabase certificates fetch failed: %s", exc)
+    return FALLBACK_CERTIFICATES
+
+
+def get_achievements(settings: Settings | None = None) -> list[Achievement]:
+    settings = settings or get_settings()
+    client = get_supabase_client(settings)
+    if client and settings.use_supabase_content:
+        try:
+            resp = client.table("achievements").select("*").eq("is_active", True).order("sort_order").execute()
+            if resp.data:
+                return [
+                    Achievement(
+                        id=str(row["id"]),
+                        title=row["title"],
+                        description=row.get("description"),
+                        sort_order=row.get("sort_order", 0),
+                    )
+                    for row in resp.data
+                ]
+        except Exception as exc:
+            logger.warning("Supabase achievements fetch failed: %s", exc)
+    return FALLBACK_ACHIEVEMENTS
+
+
 def get_ai_suggestions(settings: Settings | None = None) -> AISuggestionsResponse:
     settings = settings or get_settings()
     client = get_supabase_client(settings)
@@ -258,6 +330,28 @@ def build_ai_context_block(settings: Settings | None = None) -> str:
             period = f" ({ed.start_date or ''}–{ed.end_date or ''})" if ed.start_date or ed.end_date else ""
             desc = f" {ed.description}" if ed.description else ""
             lines.append(f"- {ed.degree}{field} — {ed.institution}{period}.{desc}")
+
+    languages = get_languages(settings)
+    if languages:
+        lines.append("\nLanguages:")
+        for language in languages:
+            proficiency = f" ({language.proficiency})" if language.proficiency else ""
+            lines.append(f"- {language.name}{proficiency}")
+
+    certificates = get_certificates(settings)
+    if certificates:
+        lines.append("\nCertificates:")
+        for certificate in certificates:
+            issuer = f" — {certificate.issuer}" if certificate.issuer else ""
+            lines.append(f"- {certificate.title}{issuer}")
+
+    achievements = get_achievements(settings)
+    if achievements:
+        lines.append("\nAchievements:")
+        for achievement in achievements:
+            lines.append(f"- {achievement.title}")
+            if achievement.description:
+                lines.append(f"  {achievement.description}")
 
     if projects:
         lines.append("\nActive projects:")

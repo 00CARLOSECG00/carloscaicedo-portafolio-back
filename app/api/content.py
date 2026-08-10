@@ -3,9 +3,12 @@
 from fastapi import APIRouter, HTTPException
 
 from app.models.schemas import (
+    Achievement,
     AISuggestionsResponse,
+    Certificate,
     Education,
     Experience,
+    Language,
     MethodologyStep,
     Profile,
     ProfileContextChunk,
@@ -47,6 +50,21 @@ async def education() -> list[Education]:
 @router.get("/methodology", response_model=list[MethodologyStep])
 async def methodology() -> list[MethodologyStep]:
     return content_service.get_methodology()
+
+
+@router.get("/languages", response_model=list[Language])
+async def languages() -> list[Language]:
+    return content_service.get_languages()
+
+
+@router.get("/certificates", response_model=list[Certificate])
+async def certificates() -> list[Certificate]:
+    return content_service.get_certificates()
+
+
+@router.get("/achievements", response_model=list[Achievement])
+async def achievements() -> list[Achievement]:
+    return content_service.get_achievements()
 
 
 @router.get("/profile-context", response_model=list[ProfileContextChunk])

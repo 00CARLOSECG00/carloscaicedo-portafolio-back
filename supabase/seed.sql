@@ -136,6 +136,20 @@ INSERT INTO education (institution, degree, field, description, start_date, end_
   );
 
 -- ---------------------------------------------------------------------------
+-- Languages, certificates and achievements
+-- ---------------------------------------------------------------------------
+TRUNCATE languages, certificates, achievements RESTART IDENTITY;
+INSERT INTO languages (name, proficiency, sort_order) VALUES
+  ('Spanish', 'Native', 1),
+  ('English', 'Professional working proficiency', 2);
+
+INSERT INTO certificates (title, issuer, issue_date, sort_order) VALUES
+  ('Certificate title', 'Issuer name', 'YYYY', 1);
+
+INSERT INTO achievements (title, description, sort_order) VALUES
+  ('Built an interactive AI portfolio', 'Connected LLMs, NLP and data architecture into a full-stack experience that can be explored live.', 1);
+
+-- ---------------------------------------------------------------------------
 -- Methodology ("How I Think")
 -- ---------------------------------------------------------------------------
 TRUNCATE methodology_steps RESTART IDENTITY;

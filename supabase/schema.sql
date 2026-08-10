@@ -74,6 +74,39 @@ CREATE TABLE IF NOT EXISTS education (
 );
 
 -- ---------------------------------------------------------------------------
+-- Languages, certificates and achievements for the CV highlights section
+-- ---------------------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS languages (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  name TEXT NOT NULL,
+  proficiency TEXT,
+  sort_order INT DEFAULT 0,
+  is_active BOOLEAN DEFAULT true,
+  created_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+CREATE TABLE IF NOT EXISTS certificates (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  title TEXT NOT NULL,
+  issuer TEXT,
+  issue_date TEXT,
+  credential_url TEXT,
+  logo_url TEXT,
+  sort_order INT DEFAULT 0,
+  is_active BOOLEAN DEFAULT true,
+  created_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+CREATE TABLE IF NOT EXISTS achievements (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  title TEXT NOT NULL,
+  description TEXT,
+  sort_order INT DEFAULT 0,
+  is_active BOOLEAN DEFAULT true,
+  created_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- ---------------------------------------------------------------------------
 -- "How I Think" methodology steps
 -- ---------------------------------------------------------------------------
 CREATE TABLE IF NOT EXISTS methodology_steps (
@@ -152,6 +185,9 @@ ALTER TABLE site_profile ENABLE ROW LEVEL SECURITY;
 ALTER TABLE projects ENABLE ROW LEVEL SECURITY;
 ALTER TABLE experience ENABLE ROW LEVEL SECURITY;
 ALTER TABLE education ENABLE ROW LEVEL SECURITY;
+ALTER TABLE languages ENABLE ROW LEVEL SECURITY;
+ALTER TABLE certificates ENABLE ROW LEVEL SECURITY;
+ALTER TABLE achievements ENABLE ROW LEVEL SECURITY;
 ALTER TABLE methodology_steps ENABLE ROW LEVEL SECURITY;
 ALTER TABLE ai_suggestions ENABLE ROW LEVEL SECURITY;
 ALTER TABLE profile_context ENABLE ROW LEVEL SECURITY;
@@ -162,6 +198,9 @@ CREATE POLICY "Public read site_profile" ON site_profile FOR SELECT USING (true)
 CREATE POLICY "Public read projects" ON projects FOR SELECT USING (true);
 CREATE POLICY "Public read experience" ON experience FOR SELECT USING (true);
 CREATE POLICY "Public read education" ON education FOR SELECT USING (true);
+CREATE POLICY "Public read languages" ON languages FOR SELECT USING (true);
+CREATE POLICY "Public read certificates" ON certificates FOR SELECT USING (true);
+CREATE POLICY "Public read achievements" ON achievements FOR SELECT USING (true);
 CREATE POLICY "Public read methodology_steps" ON methodology_steps FOR SELECT USING (true);
 CREATE POLICY "Public read ai_suggestions" ON ai_suggestions FOR SELECT USING (true);
 CREATE POLICY "Public read profile_context" ON profile_context FOR SELECT USING (true);
