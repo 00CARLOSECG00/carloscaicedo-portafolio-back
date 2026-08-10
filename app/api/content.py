@@ -8,6 +8,7 @@ from app.models.schemas import (
     Experience,
     MethodologyStep,
     Profile,
+    ProfileContextChunk,
     Project,
 )
 from app.services import content_service
@@ -46,6 +47,11 @@ async def education() -> list[Education]:
 @router.get("/methodology", response_model=list[MethodologyStep])
 async def methodology() -> list[MethodologyStep]:
     return content_service.get_methodology()
+
+
+@router.get("/profile-context", response_model=list[ProfileContextChunk])
+async def profile_context() -> list[ProfileContextChunk]:
+    return content_service.get_profile_context()
 
 
 @router.get("/ai/suggestions", response_model=AISuggestionsResponse)
